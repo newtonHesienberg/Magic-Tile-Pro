@@ -68,8 +68,14 @@ public class GameManager : MonoBehaviour
     }
     private void NormalTileDestroy(RaycastHit2D hit)
     {
+        Vibrate();
         hit.collider.gameObject.GetComponent<SpriteRenderer>().color = color;
         Instantiate(destroyEffect, hit.collider.transform.position, Quaternion.identity);
+    }
+
+    public void Vibrate()
+    {
+        Vibration.Vibrate(40);
     }
 
     private void FixedUpdate()
