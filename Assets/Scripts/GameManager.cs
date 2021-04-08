@@ -27,7 +27,32 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[i].position);
+
+            RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                if (hit.collider != null)
+                {
+                    if (hit.collider.CompareTag("Tiles"))
+                        NormalTileDestroy(hit);
+                }
+            }
+
+            if(Input.touchCount > 0)
+            {
+                if (hit.collider != null)
+                {
+                    if (hit.collider.CompareTag("Slider"))
+                        Sliding(hit);
+                }
+            }
+        }
+
+       /* if (Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
@@ -36,9 +61,9 @@ public class GameManager : MonoBehaviour
                 if (hit.collider.CompareTag("Tiles"))
                     NormalTileDestroy(hit);
             }
-        }
+        }*/
 
-        if (Input.GetMouseButton(0))
+        /*if (Input.GetMouseButton(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
@@ -47,7 +72,7 @@ public class GameManager : MonoBehaviour
                 if (hit.collider.CompareTag("Slider"))
                     Sliding(hit);
             }
-        }
+        }*/
     }
 
     private void Sliding(RaycastHit2D hit)

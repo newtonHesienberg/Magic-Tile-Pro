@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Raabta.unity
-    guid: a13c29c2b668de546a59a8bea292ba57
+    path: Assets/Scenes/Lut Gya.unity
+    guid: 8229755abe4694442b0d417dc1ac2e16
   m_configObjects: {}
